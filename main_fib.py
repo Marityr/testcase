@@ -13,4 +13,6 @@ from functools import lru_cache
 def fib(x):
     return fib(x - 1) + fib(x - 2) if x > 1 else x
 
+
+# передоваемый параметр позиция требуемого элемента
 print(fib(100))

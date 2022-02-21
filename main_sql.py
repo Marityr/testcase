@@ -11,14 +11,15 @@ load_dotenv()
 try:
     connection = psycopg2.connect(user=os.getenv('USER'),
                                   password=os.getenv('PASWORD'),
-                                  host="127.0.0.1",
+                                  host="localhost",
                                   port="5432",
                                   database=os.getenv('NAME_DB'))
 
     cursor = connection.cursor()
 
     create_table_query = '''create table files(id int, image bytea);'''
-    record_table_file = '''insert into files values (1, pg_read_binary_file('image.jpg')::bytea);'''
+    #TODO переделать через os модуль путь к файлу
+    record_table_file = '''insert into files values (1, pg_read_binary_file('/Users/mojas/Documents/GitHub/testcase/files.psd')::bytea);'''
     
     cursor.execute(create_table_query)
     cursor.execute(record_table_file)
