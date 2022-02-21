@@ -16,9 +16,9 @@ try:
                                   database=os.getenv('NAME_DB'))
 
     cursor = connection.cursor()
-    
+
     create_table_query = '''create table files(id int, image bytea);'''
-    record_table_file = '''insert into files values (1, pg_read_binary_file('/path/to/image.jpg')::bytea);'''
+    record_table_file = '''insert into files values (1, pg_read_binary_file('image.jpg')::bytea);'''
     
     cursor.execute(create_table_query)
     cursor.execute(record_table_file)
